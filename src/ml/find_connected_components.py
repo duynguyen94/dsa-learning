@@ -29,15 +29,16 @@ def connected_components(image_path):
     return labeled_image, num_labels, labels, stats, centroids
 
 
-# Example usage
-image_path = 'path_to_your_image.png'
-labeled_image, num_labels, labels, stats, centroids = connected_components(image_path)
+if __name__ == '__main__':
+    # Example usage
+    image_path = 'path_to_your_image.png'
+    labeled_image, num_labels, labels, stats, centroids = connected_components(image_path)
 
-# Display the result
-cv2.imshow('Labeled Image', labeled_image)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+    # Display the result
+    cv2.imshow('Labeled Image', labeled_image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
-print(f"Number of labels: {num_labels}")
-print(f"Stats: {stats}")
-print(f"Centroids: {centroids}")
+    print(f"Number of labels: {num_labels}")
+    print(f"Stats: {stats}")
+    print(f"Centroids: {centroids}")
