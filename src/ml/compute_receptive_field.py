@@ -13,7 +13,7 @@ def compute_receptive_field(strides, kernel_sizes):
         raise ValueError("The length of strides and kernel_sizes lists must be equal.")
 
     receptive_field = 1
-    for stride, kernel_size in zip(receptive_field):
+    for stride, kernel_size in zip(strides, kernel_sizes):
         receptive_field = receptive_field * stride + (kernel_size - 1)
 
     return receptive_field
