@@ -51,3 +51,4 @@ if __name__ == '__main__':
     connections = [[0, 1], [1, 2], [2, 0], [1, 3]]
     res = tarjan_dfs(connections, n)
     print(res)
+    assert res == [[1, 3]]

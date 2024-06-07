@@ -181,3 +181,4 @@ if __name__ == '__main__':
 
     res = prim_algo(adj)
     print(res)
+    assert res == 16
