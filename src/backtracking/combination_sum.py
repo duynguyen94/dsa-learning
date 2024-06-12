@@ -56,7 +56,9 @@ if __name__ == '__main__':
     candidates = [2, 3, 6, 7]
     target = 7
     print(combination_sum(candidates, target))
+    assert combination_sum(candidates, target) == [[2, 2, 3], [7]]
 
     candidates = [2, 1, 1, 2, 2, 6, 3]
     target = 6
     print(combination_sum_ii(candidates, target))
+    assert combination_sum_ii(candidates, target) == [[1, 1, 2, 2], [1, 2, 3], [2, 2, 2], [6]]
