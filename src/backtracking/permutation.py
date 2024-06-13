@@ -54,6 +54,8 @@ def permute_unique(nums: List[int]) -> List[List[int]]:
 if __name__ == '__main__':
     nums = [1, 2, 3]
     print(permute(nums))
+    assert sorted(permute(nums)) == sorted([[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]])
 
     nums = [1, 1, 2]
     print(permute_unique(nums))
+    assert sorted(permute_unique(nums)) == sorted([[1, 1, 2], [1, 2, 1], [2, 1, 1]])
