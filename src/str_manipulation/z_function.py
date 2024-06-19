@@ -42,3 +42,4 @@ if __name__ == '__main__':
     haystack = "aaacdabcbcbc"
     needle = "bc"
     print(z_fn_search(haystack, needle))
+    assert z_fn_search(haystack, needle) == [6, 8, 10]
