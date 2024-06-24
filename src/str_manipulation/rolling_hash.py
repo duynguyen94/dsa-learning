@@ -29,3 +29,4 @@ if __name__ == '__main__':
     haystack = "aaacdabcbcbc"
     needle = "bc"
     print(rolling_hash(haystack, needle))
+    assert rolling_hash(haystack, needle) == [6, 8, 10]
