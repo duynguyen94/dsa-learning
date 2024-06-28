@@ -89,19 +89,49 @@ def min_cut_bot_up(s):
     return dp[n - 1]
 
 
+def min_cut_bot_up_simplify(s):
+    n = len(s)
+    palind = [[False] * n for _ in range(n)]
+    dp = [float('inf')] * n
+
+    # Step 1: Determine all palindromic substrings
+    for j in range(n):
+        for i in range(j + 1):
+            if s[i] == s[j]:
+                if j - i <= 2:
+                    palind[i][j] = True  # Case of single char or two chars
+                else:
+                    palind[i][j] = palind[i + 1][j - 1]  # Check inner substring
+
+    # Step 2: Calculate the minimum cuts needed
+    for i in range(n):
+        if palind[0][i]:
+            dp[i] = 0
+        else:
+            for j in range(i):
+                if palind[j + 1][i]:
+                    dp[i] = min(dp[i], 1 + dp[j])
+
+    return dp[n - 1] if dp[n - 1] != float('inf') else 1
+
+
 if __name__ == '__main__':
     s = "aab"
     assert min_cut_top_down(s) == 1
     assert min_cut_bot_up(s) == 1
+    assert min_cut_bot_up_simplify(s) == 1
 
     s = "a"
     assert min_cut_top_down(s) == 0
     assert min_cut_bot_up(s) == 0
+    assert min_cut_bot_up_simplify(s) == 0
 
     s = "ab"
     assert min_cut_top_down(s) == 1
     assert min_cut_bot_up(s) == 1
+    assert min_cut_bot_up_simplify(s) == 1
 
     s = "abbab"
     assert min_cut_top_down(s) == 1
     assert min_cut_bot_up(s) == 1
+    assert min_cut_bot_up_simplify(s) == 1
