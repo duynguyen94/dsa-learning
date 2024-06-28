@@ -54,20 +54,33 @@ def min_cut_bot_up(s):
     for i in range(n):
         palin[i][i] = True
 
+    # This loop iterates over all possible lengths of substrings starting from 2 to n.
     for l in range(2, n + 1):
+
+        # iterates over all possible starting indices i for substrings of length l.
         for i in range(n - l + 1):
+
+            # The ending index of substr, j is ending index, l is length and i is starting
             j = i + l - 1
 
+            # substr with length == 2
             if l == 2:
                 palin[i][j] = s[i] == s[j]
+            # substr with length > 2
             else:
                 palin[i][j] = s[i] == s[j] and palin[i + 1][j - 1]
 
     for i in range(n):
+        # For each character s[0:i+1], if the entire substring s[0:i+1] is a palindrome (palind[0][i] is True),
+        # then no cuts are needed, so dp[i] is set to 0.
         if palin[0][i] is True:
             dp[i] = 0
+
         else:
             for j in range(i):
+                # check if the substring s[j+1:i+1] is a palindrome (palind[j+1][i] is True)
+                # If it is, then the minimum cuts needed for s[0:i+1] would be 1 + dp[j]
+                # (one cut to separate the palindromic substring s[j+1:i+1] and the minimum cuts needed for s[0:j+1]).
                 if palin[j + 1][i] is True and dp[i] > 1 + dp[j]:
                     dp[i] = 1 + dp[j]
 
