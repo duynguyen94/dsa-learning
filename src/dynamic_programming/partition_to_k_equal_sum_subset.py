@@ -62,11 +62,22 @@ def can_partition_k_subsets_dp_bitmask(nums, k):
         if dp[i] is True:
 
             for j in range(n):
-                tmp = i | (1 << j)
-                if tmp != i:
-                    if nums[j] <= subsum - (total[i] % subsum):
-                        dp[tmp] = True
-                        total[tmp] = nums[j] + total[i]
+                # The expression 1 << j shifts the number 1 left by j bits,
+                # creating a bitmask where only the j-th bit is set.
+                new_subset = i | (1 << j)
+
+                # If they are the same, it means the j-th element was already included in i,
+                # and there’s no need to process further.
+                if new_subset != i:
+                    remaining_capacity = subsum - (total[i] % subsum)
+
+                    # total[i] % subsum gives the current sum of the elements in subset i modulo subsum.
+                    if nums[j] <= remaining_capacity:
+                        # This condition checks if the current element nums[j] can be added to the current subset
+                        # i without exceeding subsum.
+                        # means adding nums[j] to subset i forms a valid new subset tmp
+                        dp[new_subset] = True
+                        total[new_subset] = nums[j] + total[i]
                     else:
                         break
 
