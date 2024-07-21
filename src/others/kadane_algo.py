@@ -4,6 +4,12 @@ Algo to find the Largest Sum Contiguous Subarray
 
 
 def max_subarray_sum(arr):
+    """
+    TC: O(n)
+    SC: O(1)
+    :param arr:
+    :return:
+    """
     max_so_far = arr[0]
     max_ending_here = arr[0]
 
