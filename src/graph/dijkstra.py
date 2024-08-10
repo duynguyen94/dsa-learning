@@ -33,3 +33,4 @@ if __name__ == '__main__':
              [0, 0, 2, 0, 0, 0, 6, 7, 0]
              ]
     print(dijkstra_algo(len(graph), graph, 0))
+    assert dijkstra_algo(len(graph), graph, 0) == [0, 4, 12, 19, 21, 11, 9, 8, 14]
